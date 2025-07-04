@@ -1,0 +1,51 @@
+## 👉 Bỏ qua các thư mục biên dịch và tạm thời
+bin/
+obj/
+*.dll
+*.exe
+*.log
+*.pdb
+*.cache
+
+## 👉 Visual Studio và Rider
+.vs/
+*.user
+*.suo
+
+## 👉 Thư viện
+packages/
+project.lock.json
+*.nupkg
+*.snupkg
+
+## 👉 Cấu hình cá nhân
+*.dbmdl
+*.bak
+*.mdf
+*.ldf
+*.sqlite
+*.sql
+
+## 👉 Cấu hình chuỗi kết nối (nên giữ riêng tư)
+appsettings.Development.json
+secrets.json
+
+## 👉 Cấu hình môi trường
+.env
+.env.*
+
+## 👉 Thư mục phát sinh IDE
+.idea/
+*.iml
+
+## 👉 Thư mục phát sinh khi publish
+publish/
+*.Publish.xml
+
+## 👉 Git
+*.orig
+*.rej
+
+## 👉 Các file hệ thống
+Thumbs.db
+desktop.ini
