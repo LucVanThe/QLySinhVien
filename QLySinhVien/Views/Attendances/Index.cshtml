@@ -1,0 +1,76 @@
+﻿@model IEnumerable<QLySinhVien.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr id="row_@item.AttendanceId">
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.NameClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AttendanceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AttendanceId">Details</a> |
+                <a class="btn btn-danger btndelete" data-id="@item.AttendanceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+        $('body').on('click',".btndelete",function(){
+        var id=$(this).data('id');
+        if(confirm("Xóa sinh viên này ")){
+            $.ajax({
+                url:'@Url.Action("Delete", "Attendances")',
+                type: 'POST',
+                data:{id:id},
+                success: function(res){
+                    if(res.success){
+                        $('#row_'+id).remove();
+                        alert("Xoá thành công");
+                    }else{
+                        alert("Xóa thất bại");
+                    }
+                },
+                error: function(){
+                    alert("có lỗi khi xóa");
+                }
+            });
+        }
+
+        });
+        });
+    </script>
+}

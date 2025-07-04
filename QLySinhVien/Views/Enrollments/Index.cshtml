@@ -1,0 +1,75 @@
+﻿@model List<QLySinhVien.ViewModel.SVdangkyVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Danh sách đăng ký môn học @Model.FirstOrDefault()?.TenMonHoc</h2>
+        <a class="btn btn-success" asp-action="Create" asp-route-MaMonHoc="@ViewBag.MaMonHoc"><i class="bi bi-plus-circle"></i> Thêm mới</a>
+    </div>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Stt</th>
+                <th>Họ Tên</th>
+                
+                <th>
+                   Ngày đăng ký
+                </th>              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.MaDangky">
+                    <td>@(i++)</td>
+                    <td>
+                       @item.HoTen
+                    </td>
+                    <td>
+                        @item.NgayDangKy
+                    </td>                  
+                    <td class="text-center">
+                                     
+                        <button class="btn btn-sm btn-danger btndelete" data-id="@item.MaDangky">Xoá</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+        $('body').on('click',".btndelete",function(){
+        var id=$(this).data('id');
+        if(confirm("Xóa phần đăng ký này ")){
+            $.ajax({
+                url:'@Url.Action("Delete", "Enrollments")',
+                type: 'POST',
+                data:{id:id},
+                success: function(res){
+                    if(res.success){
+                        $('#row_'+id).remove();
+                        alert("Xoá thành công");
+                    }else{
+                        alert("Xóa thất bại");
+                    }
+                },
+                error: function(){
+                    alert("có lỗi khi xóa");
+                }
+            });
+        }
+
+        });
+        });
+    </script>
+}

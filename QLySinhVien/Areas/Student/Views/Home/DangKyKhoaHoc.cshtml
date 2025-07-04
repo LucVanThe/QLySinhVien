@@ -1,0 +1,54 @@
+﻿@model List<QLySinhVien.ViewModel.RegisterCourse>
+@{
+    ViewData["Title"] = "DangKyKhoaHoc";
+    Layout = "~/Areas/Student/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đăng ký khóa học</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên môn học</th>
+            <th>Số tín chỉ</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Credits</td>
+                <td>
+                    @if (course.IsRegistered)
+                    {
+                        <span class="text-success">Đã đăng ký</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Chưa đăng ký</span>
+                    }
+                </td>
+                <td>
+                    @if (!course.IsRegistered)
+                    {
+                        <form asp-action="DangKyKhoaHoc" method="post">
+                            <input type="hidden" name="courseId" value="@course.CourseId" />
+                            <button type="submit" class="btn btn-sm btn-primary">Đăng ký</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="HuyDangKy" method="post" onsubmit="return confirm('Bạn có chắc muốn hủy đăng ký môn này?');">
+                            <input type="hidden" name="courseId" value="@course.CourseId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Hủy đăng ký</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

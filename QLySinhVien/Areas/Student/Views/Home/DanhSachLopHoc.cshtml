@@ -1,0 +1,33 @@
+﻿@model List<QLySinhVien.ViewModel.LopHocVM>
+@{
+    ViewData["Title"] = "DanhSachLopHoc";
+    Layout = "~/Areas/Student/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>🏫 Danh sách lớp học</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã lớp</th>
+            <th>Tên lớp</th>
+            <th>Môn học</th>
+            <th>Giảng viên</th>
+            <th>Ngày học</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lop in Model)
+        {
+            <tr>
+                <td>@lop.ClassId</td>
+                <td>@lop.NameClass</td>
+                <td>@lop.CourseTitle</td>
+                <td>@lop.TeacherName</td>
+                <td>@lop.ClassDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,28 @@
+﻿@model QLySinhVien.Models.Student
+
+@{
+    ViewData["Title"] = "Thông tin sinh viên";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Thông tin sinh viên</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Họ và tên</dt>
+                <dd class="col-sm-9">@($"{Model.FirstName} {Model.LastName}")</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Ngày sinh</dt>
+                <dd class="col-sm-9">@Model.Dob?.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Giới tính</dt>
+                <dd class="col-sm-9">@Model.Gender</dd>
+            </dl>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model QLySinhVien.Models.StudentAcc
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Thông tin chi tiết </h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Họ
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                   Tên
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    Ngày sinh
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Dob)
+                </dd>
+                <dt class="col-sm-2">
+                   Giới tính
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+                <dt class="col-sm-2">
+                   Email
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-2">
+                   Điện thoại
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-2">
+                   Mật khẩu
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+                
+                <dt class="col-sm-2">
+                    Trạng thái
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt class="col-sm-2">
+                   Sinh viên
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Student.LastName)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Edit" asp-route-id="@Model.AccId" class="btn btn-warning">
+                <i class="bi bi-pencil-square"></i> Sửa
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Quay lại danh sách
+            </a>
+        </div>
+    </div>
+</div>
+

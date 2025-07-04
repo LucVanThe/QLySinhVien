@@ -1,0 +1,52 @@
+﻿@model List< QLySinhVien.ViewModel.ThemSVdangkyVM>
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var courseId = ViewBag.CourseId;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mb-3">Thêm mới</h2>
+            <hr />
+            <h3>Danh sách sinh viên chưa học @Model.FirstOrDefault()?.TenMonHoc </h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sv in Model)
+                    {
+                        <tr>
+                            <td>@sv.HoTen</td>
+                            <td>
+                                <form asp-action="Create" method="post">
+                                    <input type="hidden" name="studentId" value="@sv.MaSV" />
+                                    <input type="hidden" name="courseId" value="@sv.MaMonHoc" />
+                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+              
+            </table>
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" asp-route-MaMonHoc="@ViewBag.CourseId" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Quay lại danh sách
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

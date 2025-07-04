@@ -1,0 +1,64 @@
+﻿
+@model QLySinhVien.ViewModel.AddScoresVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mb-3">Thêm điểm</h2>
+            <hr />
+                    
+                
+            <h3>Nhập điểm cho @Model.TestName - @Model.CourseTitle</h3>
+
+            <form asp-action="Create" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TestID" />
+                <input type="hidden" asp-for="CourseID" />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Họ tên sinh viên</th>
+                            <th>Điểm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.StudentScores.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Model.StudentScores[i].StudentName
+                                    <input type="hidden" asp-for="StudentScores[i].StudentId" />
+                                    <input type="hidden" asp-for="StudentScores[i].StudentName" />
+                                </td>
+                                <td>                                   
+                                    <input asp-for="StudentScores[i].Mark" class="form-control" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="StudentScores" asp-route-testId="@Model.TestID" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Quay lại danh sách
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Lưu lại
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

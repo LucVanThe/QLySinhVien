@@ -1,0 +1,52 @@
+﻿@model QLySinhVien.Models.Class
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Thông tin chi tiết sinh viên</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Tên lớp
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NameClass)
+                </dd>
+                <dt class="col-sm-2">
+                   Ngày
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ClassDate)
+                </dd>
+                <dt class="col-sm-2">
+                   Môn học
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Course.Title)
+                </dd>
+                <dt class="col-sm-2">
+                   Giáo viên
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Teacher.LastName)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Edit" asp-route-id="@Model.ClassId" class="btn btn-warning">
+                <i class="bi bi-pencil-square"></i> Sửa
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Quay lại danh sách
+            </a>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,2 @@
+﻿Scaffold-DbContext "Server=DESKTOP-L07UI8K;Database=QLSinhVien;Trusted_Connection=True;TrustServerCertificate=True;"Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context QLSinhVien -DataAnnotations
+Scaffold-DbContext "Server=DESKTOP-L07UI8K;Database=QLSinhVien;Trusted_Connection=True;TrustServerCertificate=True;"Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context QLSinhVien -DataAnnotations -Force

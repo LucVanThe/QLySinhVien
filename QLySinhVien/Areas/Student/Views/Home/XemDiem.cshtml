@@ -1,0 +1,37 @@
+﻿@model List<QLySinhVien.ViewModel.CourseScoreVM>
+
+@{
+    ViewData["Title"] = "Kết quả học tập theo môn";
+}
+
+<h2>Kết quả học tập</h2>
+
+@foreach (var course in Model)
+{
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <strong>Môn học: @course.CourseTitle</strong>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th>Bài kiểm tra</th>
+                        <th>Trọng số (%)</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var test in course.TestScores)
+                    {
+                        <tr>
+                            <td>@test.TestName</td>
+                            <td>@test.Weight</td>
+                            <td>@test.Score</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

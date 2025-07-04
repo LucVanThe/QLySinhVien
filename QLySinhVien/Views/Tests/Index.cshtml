@@ -1,0 +1,85 @@
+﻿@model IEnumerable<QLySinhVien.Models.Test>
+
+@{
+    ViewData["Title"] = "Quản lý bài kiểm tra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Danh sách bài kiểm tra</h2>
+        <a asp-action="Create" class="btn btn-success">+ Thêm mới</a>
+    </div>
+
+    <!-- Bộ lọc môn học -->
+    <form asp-action="Index" method="get" class="form-inline mb-4">
+        <label class="mr-2 font-weight-bold">Lọc theo môn học:</label>
+        <select name="courseId" class="form-control mr-2">
+            <option value="0">-- Tất cả --</option>
+            @foreach (var course in (SelectList)ViewBag.CourseList)
+            {
+                <option value="@course.Value" selected="@(ViewBag.SelectedCourse?.ToString() == course.Value ? "selected" : null)">
+                    @course.Text
+                </option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary mr-2">Tìm</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Xóa lọc</a>
+    </form>
+
+    <!-- Bảng danh sách -->
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().TestName)</th>
+                <th>@Html.DisplayNameFor(model => model.First().Weight)</th>
+                <th>@Html.DisplayNameFor(model => model.First().Course)</th>
+                <th class="text-center" style="width: 180px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.TestId">
+                    <td>@item.TestName</td>
+                    <td>@item.Weight</td>
+                    <td>@item.Course.Title</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.TestId" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.TestId" class="btn btn-sm btn-info">Chi tiết</a>
+                        <a class="btn btn-sm btn-danger btndelete" data-id="@item.TestId">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+        $('body').on('click',".btndelete",function(){
+        var id=$(this).data('id');
+        if(confirm("Xóa kiểm tra này ")){
+            $.ajax({
+                url:'@Url.Action("Delete", "Tests")',
+                type: 'POST',
+                data:{id:id},
+                success: function(res){
+                    if(res.success){
+                        $('#row_'+id).remove();
+                        alert("Xoá thành công");
+                    }else{
+                        alert("Xóa thất bại");
+                    }
+                },
+                error: function(){
+                    alert("có lỗi khi xóa");
+                }
+            });
+        }
+
+        });
+        });
+    </script>
+}

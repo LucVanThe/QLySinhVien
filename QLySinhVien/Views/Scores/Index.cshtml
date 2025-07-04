@@ -1,0 +1,51 @@
+﻿@* @model List<QLySinhVien.ViewModel.DiemSVVM> *@
+    @model IEnumerable<QLySinhVien.Models.Test>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-4">
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Danh sách điểm</h2>
+   @*  <a asp-action="Create" class="btn btn-success">+ Thêm mới</a> *@
+        <form asp-action="Index" method="get" class="form-inline mb-4">
+            <label class="mr-2 font-weight-bold">Lọc theo môn học:</label>
+            <select name="courseId" class="form-control mr-2">
+                <option value="0">-- Tất cả --</option>
+                @foreach (var course in (SelectList)ViewBag.CourseList)
+                {
+                    <option value="@course.Value" selected="@(ViewBag.SelectedCourse?.ToString() == course.Value ? "selected" : null)">
+                        @course.Text
+                    </option>
+                }
+            </select>
+            <button type="submit" class="btn btn-primary mr-2">Tìm</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Xóa lọc</a>
+        </form>
+</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Môn học</th>
+                <th>Tên bài kiểm tra</th>
+                <th>Trọng số</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var test in Model)
+            {
+                <tr>
+                    <td>@test.Course.Title</td>
+                    <td>
+                        <a asp-action="StudentScores" asp-route-testId="@test.TestId">@test.TestName</a>
+                    </td>
+                    <td>@test.Weight</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

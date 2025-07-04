@@ -1,0 +1,47 @@
+﻿@model List<QLySinhVien.ViewModel.DangKyMonHocVm>
+@{
+    ViewData["Title"] = "DangKyMonHoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Danh sách đăng ký môn học</h2>
+       
+    </div>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Stt</th>              
+                <th>
+                    Môn học
+                </th>
+                <th>
+                    Số tín chỉ
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.MaMonHoc">
+                    <td>@(i++)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenMonHoc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoTinChi)
+                    </td>
+                   
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-primary" asp-action="Index" asp-route-MaMonHoc="@item.MaMonHoc">Thêm sinh viên</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
