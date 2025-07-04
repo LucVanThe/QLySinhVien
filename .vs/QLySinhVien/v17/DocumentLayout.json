@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\01672\\source\\repos\\QLySinhVien\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B7CCF53-5B6A-4338-A890-5B119F2B747B}|QLySinhVien\\QLySinhVien.csproj|c:\\users\\01672\\source\\repos\\qlysinhvien\\qlysinhvien\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3B7CCF53-5B6A-4338-A890-5B119F2B747B}|QLySinhVien\\QLySinhVien.csproj|solutionrelative:qlysinhvien\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\01672\\source\\repos\\QLySinhVien\\QLySinhVien\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "QLySinhVien\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\01672\\source\\repos\\QLySinhVien\\QLySinhVien\\appsettings.Development.json",
+              "RelativeToolTip": "QLySinhVien\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-04T12:32:12.968Z",
+              "EditorCaption": ""
             }
           ]
         }

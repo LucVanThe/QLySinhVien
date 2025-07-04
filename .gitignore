@@ -1,0 +1,55 @@
+## 🛠 Thư mục build output
+bin/
+obj/
+
+## 🔧 File tạm và debug
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+*.dbmdl
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## 🔐 Secrets và cấu hình cục bộ
+appsettings.Development.json
+secrets.json
+*.env
+.env.*
+
+## 🧠 IDE và cấu hình cá nhân
+.vs/
+.idea/
+*.iml
+
+
+
+## 🌐 Web tài nguyên build
+wwwroot/dist/
+wwwroot/node_modules/
+node_modules/
+
+## ⚙️ Publish
+publish/
+*.Publish.xml
+
+## 🖼 File hệ thống
+Thumbs.db
+desktop.ini
+.DS_Store
+
+## 🔁 Git merge
+*.orig
+*.rej
+
+## 💬 Thêm nếu dùng Rider/JetBrains
+.idea/
+*.sln.iml
+
+## 🧪 Test kết quả
+TestResults/
+*.coverage
+*.coveragexml
+*.testsettings
